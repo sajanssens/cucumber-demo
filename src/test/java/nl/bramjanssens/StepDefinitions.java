@@ -4,7 +4,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-import static nl.bramjanssens.IsItFriday.isItFriday;
+import static nl.bramjanssens.DateChecker.isItFriday;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class StepDefinitions {
@@ -21,6 +21,11 @@ public class StepDefinitions {
         today = "Friday";
     }
 
+    @Given("today is {string}")
+    public void todayIs(String arg0) {
+        today = arg0;
+    }
+
     @When("I ask whether it's Friday yet")
     public void i_ask_whether_it_s_Friday_yet() {
         actualAnswer = isItFriday(today);
@@ -29,11 +34,5 @@ public class StepDefinitions {
     @Then("I should be told {string}")
     public void i_should_be_told(String expectedAnswer) {
         assertEquals(expectedAnswer, actualAnswer);
-    }
-}
-
-class IsItFriday {
-    static String isItFriday(String today) {
-        return "Friday".equals(today) ? "TGIF" : "Nope";
     }
 }
