@@ -1,10 +1,10 @@
-package nl.bramjanssens;
+package nl.bramjanssens.datechecker;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-import static nl.bramjanssens.DateChecker.isItFriday;
+import static nl.bramjanssens.datechecker.DateChecker.isItFriday;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class StepDefinitions {

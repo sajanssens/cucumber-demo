@@ -1,4 +1,4 @@
-package nl.bramjanssens;
+package nl.bramjanssens.datechecker;
 
 public class DateChecker {
 
