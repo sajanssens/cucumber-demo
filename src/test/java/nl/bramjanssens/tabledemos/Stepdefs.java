@@ -77,4 +77,52 @@ public class Stepdefs {
     public void itShouldBe(int count) {
         assertEquals(count, this.actual);
     }
+
+    public record Product(String name) { }
+
+    @DataTableType
+    public Product toProduct(String from) {
+        return new Product(from);
+    }
+
+    public record OrderLine(String name, int qty) { }
+
+    @Given("I have an empty basket")
+    public void iHaveAnEmptyBasket() {
+
+    }
+
+    @When("I add these single column rows:") // single column row as string
+    public void iAddTheseRows(List<String> products) {
+        products.forEach(System.out::println);
+    }
+
+    @When("I add these single column products:") // single column row as Product wanted, @DataTableType String->Product needed
+    public void iAddTheseProducts(List<Product> products) {
+        products.forEach(System.out::println);
+    }
+
+    @When("I add these product rows with header:") // single column row as map of strings (with name key from header)
+    public void iAddTheseProductRowsWithHeader(List<Map<String, String>> products) {
+        products.forEach(System.out::println);
+    }
+
+    @When("I add these order line rows with header:") // multi-column row as map of strings (with name and qty keys from header)
+    public void iAddTheseRowsWithHeader(List<Map<String, String>> orderLines) {
+        orderLines.forEach(System.out::println);
+    }
+
+    @When("I add these order lines with header:") // multi-column row as OrderLine wanted, so @DataTableType Map<String, String> -> OrderLine needed
+    public void iAddTheseOrderLines(List<OrderLine> orderLines) {
+        orderLines.forEach(System.out::println);
+    }
+
+    @DataTableType
+    public OrderLine toOrderLine(Map<String, String> row) {
+        return new OrderLine(row.get("product"), parseInt(row.get("qty")));
+    }
+
+    @Then("It should contain {int} products")
+    public void itShouldContainProducts(int total) {
+    }
 }
