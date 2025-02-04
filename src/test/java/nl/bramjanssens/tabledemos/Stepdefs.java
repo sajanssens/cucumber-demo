@@ -81,7 +81,7 @@ public class Stepdefs {
     public record Product(String name) { }
 
     @DataTableType
-    public Product toProduct(String from) {
+    public Product from(String from) {
         return new Product(from);
     }
 
