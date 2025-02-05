@@ -1,8 +1,6 @@
-# Created by bramj at 04/02/2025
-Feature: # Enter feature name here
-  # Enter feature description here
+Feature: Looking for cheese
 
-  Scenario: Finding some cheese
+  Scenario: Finding some cheese on google
     Given I am on the Google search page
     When I search for "Cheese!"
     Then the page title should start with "cheese"
