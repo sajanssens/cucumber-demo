@@ -8,8 +8,9 @@ public class DemoStepdefs {
     public void addReg(String product) {
     }
 
-    @When("I add a {string} to my cucumber basket")
-    public void addCuc(String arg0) {
-
+    @When("I add {int} {word}(s) to my cucumber basket")
+    public void addCuc(int qty, String arg0) {
+        System.out.println(qty);
+        System.out.println(arg0);
     }
 }

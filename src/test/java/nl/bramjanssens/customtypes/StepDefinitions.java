@@ -5,8 +5,8 @@ import io.cucumber.java.en.Given;
 
 public class StepDefinitions {
 
-    @ParameterType("red|green|blue")
-    public Pixel rgb(String color) {
+    @ParameterType(value = "red|green|blue", name = "rgb")
+    public Pixel toPixel(String color) {
         return new Pixel(color);
     }
 
@@ -28,5 +28,4 @@ public class StepDefinitions {
     @Given("I have {int} \\{what?!} cucumber(s) in my belly \\(amazing!)")
     public void iHaveWhatCucumbersInMyBelly(int arg0) {
     }
-
 }

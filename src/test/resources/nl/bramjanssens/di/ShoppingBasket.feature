@@ -6,4 +6,5 @@ Feature: Add to DI shopping basket
       | banana |
       | carrot |
       | tv     |
+    And the products are in stock
     Then It should contain 3 products

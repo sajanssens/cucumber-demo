@@ -16,6 +16,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.Random;
 
 public class FindingCheese {
 
@@ -49,15 +50,16 @@ public class FindingCheese {
 
     @When("I search for {string}")
     public void search_for(String query) {
-        // Bots often type too fast. Google notices this.
-        // Instead of sendKeys(), you can use Actions API to simulate real user typing:
         WebElement element = driver.findElement(By.name("q"));
-        new Actions(driver)
-                .moveToElement(element)
-                .click()
-                .sendKeys("cheese")
-                .pause(Duration.ofMillis(500))
-                .sendKeys(Keys.ENTER).perform();
+        Actions actions = new Actions(driver);
+
+        actions.moveToElement(element).click().perform(); // Ensure the field is focused
+
+        for (char ch : query.toCharArray()) {
+            actions.sendKeys(String.valueOf(ch)).pause(Duration.ofMillis(200 + new Random().nextInt(300)));
+        }
+
+        actions.sendKeys(Keys.ENTER).perform(); // Press Enter after typing
     }
 
     @Then("the page title should start with {string}")
@@ -71,5 +73,11 @@ public class FindingCheese {
     @After()
     public void closeBrowser() {
         driver.quit();
+    }
+
+    public static void main(String[] args) {
+        double x = 0.2d + 0.54d;
+
+        System.out.println(x);
     }
 }
