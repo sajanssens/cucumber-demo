@@ -8,9 +8,7 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 
 import static io.restassured.RestAssured.get;
-import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.containsString;
-import static org.hamcrest.Matchers.is;
 
 public class QueryStarWarsApiSteps {
 
@@ -26,7 +24,7 @@ public class QueryStarWarsApiSteps {
         response = get("/people/" + id);
     }
 
-    @Then("I get a response")
+    @Then("I get a successful response")
     public void theStatusCodeIs() {
         response.then().statusCode(200);
     }

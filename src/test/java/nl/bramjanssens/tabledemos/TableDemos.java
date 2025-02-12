@@ -4,6 +4,7 @@ import io.cucumber.java.DataTableType;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import nl.bramjanssens.Product;
 
 import java.util.List;
 import java.util.Map;
@@ -11,7 +12,7 @@ import java.util.Map;
 import static java.lang.Integer.parseInt;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class Stepdefs {
+public class TableDemos {
     private List<String> animals;
     private List<List<String>> animalsCount;
     private List<Map<String, String>> animalMap;
@@ -77,8 +78,6 @@ public class Stepdefs {
     public void itShouldBe(int count) {
         assertEquals(count, this.actual);
     }
-
-    public record Product(String name) { }
 
     @DataTableType
     public Product from(String from) {

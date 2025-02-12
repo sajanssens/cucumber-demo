@@ -3,7 +3,8 @@ package nl.bramjanssens.di;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
-import nl.bramjanssens.tabledemos.Stepdefs;
+import nl.bramjanssens.Inventory;
+import nl.bramjanssens.Product;
 
 import java.util.List;
 
@@ -13,24 +14,24 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-public class ShoppingBasketDISteps {
+public class ShoppingBasketMockSteps {
 
-    private final ShoppingBasket<Stepdefs.Product> basket;
+    private final ShoppingBasket basket;
     private final Inventory inventoryMock = mock(Inventory.class);
 
-    public ShoppingBasketDISteps(ShoppingBasket<Stepdefs.Product> sb) {
+    public ShoppingBasketMockSteps(ShoppingBasket sb) {
         this.basket = sb;
         this.basket.setInventory(inventoryMock);
         when(inventoryMock.inStock(any())).thenReturn(true);
     }
 
-    @Given("I have an empty di basket")
+    @Given("I have an empty mocked basket")
     public void iHaveAnEmptyDiBasket() {
         assertNotNull(this.basket);
     }
 
     @When("I add these products:")
-    public void iAddTheseProducts(List<Stepdefs.Product> products) {
+    public void iAddTheseProducts(List<Product> products) {
         this.basket.addAll(products);
     }
 

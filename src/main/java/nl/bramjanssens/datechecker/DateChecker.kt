@@ -1,8 +1,5 @@
-package nl.bramjanssens.datechecker;
+package nl.bramjanssens.datechecker
 
-public class DateChecker {
-
-    static String isItFriday(String today) {
-        return "Friday".equals(today) ? "TGIF" : "Nope";
-    }
+object DateChecker {
+    fun isItFriday(today: String) = if ("Friday" == today) "TGIF" else "Nope"
 }
