@@ -1,8 +1,6 @@
 package nl.bramjanssens.e2ebrowserautomation;
 
 import io.cucumber.java.After;
-import io.cucumber.java.BeforeAll;
-import io.cucumber.java.PendingException;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -10,7 +8,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -19,26 +16,19 @@ import java.time.Duration;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class BrowseHomepageSteps {
-    private WebDriver driver = new ChromeDriver();
+    private WebDriver driver;
 
-    @BeforeAll
-    void setup() {
-        // Pages use several methods to detect bots, such as checking for automation flags.
-        // You can modify your ChromeOptions to avoid these detections:
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--disable-blink-features=AutomationControlled");  // Makes Selenium less detectable
-        options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"}); // Removes 'Chrome is being controlled' banner
-        options.setExperimentalOption("useAutomationExtension", false);
-        driver = new ChromeDriver(options);
-    }
-
-    @After
+    @After("@browser")
     public void closeBrowser() {
-        driver.quit();
+        if (driver != null) {
+            driver.quit();
+            driver = null;
+        }
     }
 
     @Given("I am on the home page")
     public void iAmOnTheHomePage() {
+        driver = new ChromeDriver();
         driver.get("https://quiz.bramjanssens.nl");
     }
 

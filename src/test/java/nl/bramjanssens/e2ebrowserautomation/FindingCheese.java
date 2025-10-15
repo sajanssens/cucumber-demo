@@ -23,7 +23,7 @@ import static java.time.Duration.ofMillis;
 
 public class FindingCheese {
 
-    private WebDriver driver = new ChromeDriver();
+    private WebDriver driver;
 
     @BeforeAll
     void setup() {
@@ -38,6 +38,14 @@ public class FindingCheese {
 
     @Given("I am on the Google search page")
     public void I_visit_google() {
+        if (driver == null) {
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--disable-blink-features=AutomationControlled");
+            options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
+            options.setExperimentalOption("useAutomationExtension", false);
+            driver = new ChromeDriver(options);
+        }
+
         driver.get("https://www.google.com");
 
         // Since we're opening an incognito page
@@ -78,8 +86,11 @@ public class FindingCheese {
                 .until(d -> d.getTitle().toLowerCase().startsWith(title));
     }
 
-    @After
+    @After("@browser")
     public void closeBrowser() {
-        driver.quit();
+        if (driver != null) {
+            driver.quit();
+            driver = null;
+        }
     }
 }
