@@ -53,6 +53,8 @@ public class FindingCheese {
 
     @When("I search for {string}")
     public void search_for(String query) {
+        // Not working: chrome doesn't like working with automation bots.
+
         Random random = new Random();
         Actions actions = new Actions(driver);
 
@@ -60,9 +62,9 @@ public class FindingCheese {
         actions.moveToElement(driver.findElement(By.name("q"))).click().perform();
 
         // type the characters with a random delay between them
-        query.chars().boxed()
-                .forEach(c -> actions.sendKeys(valueOf(c))
-                        .pause(ofMillis(200 + random.nextInt(300))));
+        for (char c : query.toCharArray()) {
+            actions.sendKeys(valueOf(c)).pause(ofMillis(200 + random.nextInt(300)));
+        }
 
         // Press Enter after typing
         actions.sendKeys(Keys.ENTER).pause(ofMillis(random.nextInt(1000))).perform();

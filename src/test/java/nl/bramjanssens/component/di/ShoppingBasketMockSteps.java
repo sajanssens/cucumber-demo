@@ -1,4 +1,4 @@
-package nl.bramjanssens.di;
+package nl.bramjanssens.component.di;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;

@@ -1,19 +1,20 @@
-package nl.bramjanssens.di;
+package nl.bramjanssens.component.di;
 
-import jakarta.enterprise.context.Dependent;
-import jakarta.inject.Inject;
+// import jakarta.enterprise.context.Dependent;
+// import jakarta.inject.Inject;
+
 import nl.bramjanssens.Inventory;
 import nl.bramjanssens.Product;
 
 import java.util.LinkedList;
 import java.util.List;
 
-@Dependent
+// @Dependent
 public class ShoppingBasketDI {
 
     private List<Product> contents = new LinkedList<>();
 
-    @Inject
+    // @Inject
     private Inventory inventory;
 
     public void add(Product product) {

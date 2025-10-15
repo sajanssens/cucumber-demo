@@ -1,4 +1,4 @@
-package nl.bramjanssens.customtypes;
+package nl.bramjanssens.component.customtypes;
 
 import io.cucumber.java.ParameterType;
 import io.cucumber.java.en.Given;

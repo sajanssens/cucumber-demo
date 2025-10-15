@@ -1,10 +1,10 @@
-package nl.bramjanssens.di;
+package nl.bramjanssens.component.di;
 
-import jakarta.enterprise.context.Dependent;
+// import jakarta.enterprise.context.Dependent;
 import nl.bramjanssens.Inventory;
 import nl.bramjanssens.Product;
 
-@Dependent
+// @Dependent
 public class MockInventory implements Inventory {
     @Override
     public boolean inStock(Product product) {

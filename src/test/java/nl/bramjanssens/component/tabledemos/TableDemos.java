@@ -1,4 +1,4 @@
-package nl.bramjanssens.tabledemos;
+package nl.bramjanssens.component.tabledemos;
 
 import io.cucumber.java.DataTableType;
 import io.cucumber.java.en.Given;

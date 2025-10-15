@@ -1,4 +1,4 @@
-package nl.bramjanssens.di;
+package nl.bramjanssens.component.di;
 
 import nl.bramjanssens.Inventory;
 import nl.bramjanssens.Product;

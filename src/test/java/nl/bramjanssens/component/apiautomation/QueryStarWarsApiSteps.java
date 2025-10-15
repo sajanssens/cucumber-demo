@@ -1,4 +1,4 @@
-package nl.bramjanssens.apiautomation;
+package nl.bramjanssens.component.apiautomation;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -31,6 +31,6 @@ public class QueryStarWarsApiSteps {
 
     @And("the person name is {string}")
     public void thePersonNameIs(String name) {
-        response.then().body("name", containsString(name)); ;
+        response.then().body("name", containsString(name));
     }
 }

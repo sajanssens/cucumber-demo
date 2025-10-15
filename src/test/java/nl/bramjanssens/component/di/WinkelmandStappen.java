@@ -1,10 +1,9 @@
-package nl.bramjanssens.di;
+package nl.bramjanssens.component.di;
 
 import io.cucumber.java.nl.Als;
 import io.cucumber.java.nl.Dan;
 import io.cucumber.java.nl.En;
 import io.cucumber.java.nl.Gegeven;
-import jakarta.inject.Inject;
 import nl.bramjanssens.Product;
 
 import java.util.List;
@@ -15,7 +14,7 @@ public class WinkelmandStappen {
 
     // Uses Weld, see: https://github.com/cucumber/cucumber-jvm/tree/main/cucumber-jakarta-cdi
 
-    @Inject
+    // @Inject
     private ShoppingBasketDI basket;
 
     @Gegeven("Ik heb een lege mand.")
